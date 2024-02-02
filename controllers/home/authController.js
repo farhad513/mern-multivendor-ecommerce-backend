@@ -8,7 +8,6 @@ class authController {
     const { name, email, password } = req.body;
     try {
       const user = await userModel.findOne({ email });
-      //   console.log(user);
       if (user) {
         responseReturn(res, 404, { error: "Email Already Exists" });
       } else {
@@ -31,7 +30,7 @@ class authController {
         responseReturn(res, 201, { message: "Register successful", token });
       }
     } catch (error) {
-      console.log(error.message);
+      responseReturn(res, 500, { error: error.message });
     }
   };
   login_user = async (req, res) => {
