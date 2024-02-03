@@ -23,8 +23,8 @@ class paymentController {
         const account = await stripe.accounts.create({ type: "express" });
         const accountLink = await stripe.accountLinks.create({
           account: account.id,
-          refresh_url: "http://localhost:3000/refresh",
-          return_url: `http://localhost:3000/success?activeCode=${uid}`,
+          refresh_url: `${process.env.client_customer_pro_url}/refresh`,
+          return_url: `${process.env.client_customer_pro_url}/success?activeCode=${uid}`,
           type: "account_onboarding",
         });
         await stripeModel.create({
@@ -37,8 +37,8 @@ class paymentController {
         const account = await stripe.accounts.create({ type: "express" });
         const accountLink = await stripe.accountLinks.create({
           account: account.id,
-          refresh_url: "http://localhost:3000/refresh",
-          return_url: `http://localhost:3000/success?activeCode=${uid}`,
+          refresh_url: `${process.env.client_customer_pro_url}/refresh`,
+          return_url: `${process.env.client_customer_pro_url}/success?activeCode=${uid}`,
           type: "account_onboarding",
         });
         await stripeModel.create({
